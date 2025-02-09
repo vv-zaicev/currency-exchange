@@ -1,6 +1,7 @@
 package com.zaicev.currency_exchange.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.Column;
@@ -9,34 +10,33 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Entity
 @Table(name = "Currencies")
-@JsonPropertyOrder({"id", "name", "code", "sign"})
+@JsonPropertyOrder({ "id", "name", "code", "sign" })
 public class Currency {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NonNull
+	@NotNull
+	@Length(min = 3, max = 3)
 	@Column(unique = true)
 	private String code;
 
-	@NonNull
-	@JsonProperty("name")
-	private String fullName;
+	@NotNull
+	@Column(name = "fullName")
+	private String name;
 
-	@NonNull
+	@NotNull
 	private String sign;
 }
