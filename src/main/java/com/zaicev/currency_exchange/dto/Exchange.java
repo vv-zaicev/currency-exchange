@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@JsonPropertyOrder({"baseCurrency", "targetCurrence", "rate", "amount", "convertedAmount"})
+@JsonPropertyOrder({"baseCurrency", "targetCurrency", "rate", "amount", "convertedAmount"})
 public class Exchange {
 	private Currency baseCurrency;
 	private Currency targetCurrency;
