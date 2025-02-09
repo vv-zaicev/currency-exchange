@@ -74,6 +74,9 @@ public class ExchangeRateController {
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
 		exchangeRate.setRate(rate);
+		
+		exchangeRateRepository.save(exchangeRate);
+		
 		return exchangeRate;
 	}
 
