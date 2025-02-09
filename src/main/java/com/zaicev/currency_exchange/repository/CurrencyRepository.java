@@ -11,4 +11,6 @@ import com.zaicev.currency_exchange.model.Currency;
 public interface CurrencyRepository extends JpaRepository<Currency, Long> {
 	
 	Optional<Currency> findByCode(String code);
+	
+	boolean existsByCode(String code);
 }
