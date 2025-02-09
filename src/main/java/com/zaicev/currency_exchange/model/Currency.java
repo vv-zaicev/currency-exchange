@@ -1,5 +1,8 @@
 package com.zaicev.currency_exchange.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +23,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "Currencies")
+@JsonPropertyOrder({"id", "name", "code", "sign"})
 public class Currency {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +34,7 @@ public class Currency {
 	private String code;
 
 	@NonNull
+	@JsonProperty("name")
 	private String fullName;
 
 	@NonNull
